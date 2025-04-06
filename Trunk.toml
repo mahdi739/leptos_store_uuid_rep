@@ -1,0 +1,6 @@
+[build]
+filehash = true
+no-sri = true
+release = false
+[serve]
+port = 1420

@@ -1,0 +1,22 @@
+[package]
+name = "leptos_store_uuid_rep"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+leptos = { git = "https://github.com/leptos-rs/leptos", features = ["csr"] }
+reactive_stores = { git = "https://github.com/leptos-rs/leptos", package = "reactive_stores" }
+reactive_stores_macro = { git = "https://github.com/leptos-rs/leptos", package = "reactive_stores_macro" }
+uuid = { version = "1.13.1", features = ["js", "serde", "v4"] }
+console_log = "1"
+log = "0.4.22"
+console_error_panic_hook = "0.1.7"
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+panic = "abort"
+strip = true
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-04"]
