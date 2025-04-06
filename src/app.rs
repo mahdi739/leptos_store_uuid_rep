@@ -39,21 +39,19 @@ pub fn App() -> impl IntoView {
   view! {
     <button on:click=move |_| {
       let length = state.sessions().get().len();
-      spawn_local(async move {
-        state
-          .sessions()
-          .update(|f| {
-            f.push(Session {
-              id: length + 1,
-              messages: vec![
-                Message {
-                  id: Uuid::new_v4(),
-                  parts: vec![],
-                },
-              ],
-            })
-          });
-      });
+      state
+        .sessions()
+        .update(|f| {
+          f.push(Session {
+            id: length + 1,
+            messages: vec![
+              Message {
+                id: Uuid::new_v4(),
+                parts: vec![],
+              },
+            ],
+          })
+        });
     }>"ADD SESSION"</button>
     {move || {
       state
